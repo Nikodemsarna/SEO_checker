@@ -95,6 +95,38 @@ export interface AnalysisResults {
   };
 }
 
+export interface SiteScanPageResult {
+  url: string;
+  title: string | null;
+  wordCount: number | null;
+  seoScore: number | null;
+  geoScore: number | null;
+  error: string | null;
+  seoCategories?: CheckCategory[];
+  geoCategories?: CheckCategory[];
+}
+
+export interface SiteIssueSummary {
+  id: string;
+  label: string;
+  category: "seo" | "geo";
+  failCount: number;
+  warnCount: number;
+  pagesAffected: number;
+}
+
+export interface SiteScanSummary {
+  startUrl: string;
+  origin: string;
+  discoveryMethod: "sitemap" | "crawl";
+  pagesScanned: number;
+  truncated: boolean;
+  avgSeoScore: number | null;
+  avgGeoScore: number | null;
+  topIssues: SiteIssueSummary[];
+  pages: SiteScanPageResult[];
+}
+
 export interface Audit {
   id: number;
   page_id: number | null;

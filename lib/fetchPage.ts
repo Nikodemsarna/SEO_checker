@@ -31,7 +31,7 @@ function assertFetchableUrl(raw: string): URL {
   return parsed;
 }
 
-async function timedFetch(url: string, init?: RequestInit): Promise<Response> {
+export async function timedFetch(url: string, init?: RequestInit): Promise<Response> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
